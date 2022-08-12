@@ -1,10 +1,10 @@
 {% extends "baseAdmin.html.twig" %}
 
-{% block title %}{{ app.request.attributes.get('_route') == 'product_create' ? 'création' : 'modification' }} categorie{% endblock %}
+{% block title %}{{ app.request.attributes.get('_route') == 'category_create' ? 'création' : 'modification' }} categorie{% endblock %}
 
 {% block body %}
 
-    <h1 class="mb-5">{{ app.request.attributes.get('_route') == 'product_create' ? 'Créer' : 'Modifier' }} une categorie</h1>
+    <h1 class="mb-5">{{ app.request.attributes.get('_route') == 'category_create' ? 'Créer' : 'Modifier' }} une categorie</h1>
 
     {# {{ form(productForm) }} #}
 
@@ -24,15 +24,15 @@
             </div>
             <div class="col-4">
                 {{ form_row(categoryForm.description, {
-                    'label': 'Quantité',
+                    'label': 'description',
                     'attr': {
-                        'placeholder': 'Ex.: 12'
+                        'placeholder': 'loresm,...'
                     }
                 }) }}
             </div>
           
                 <div class="col-4">
-                    {{ form_row(productForm.img, {
+                    {{ form_row(categoryForm.img, {
                         'label': 'Image principale (obligatoire)'
                     }) }}
                 </div>
@@ -55,6 +55,6 @@
             </div>
         </div>
 
-    {{ form_end(productForm) }}
+    {{ form_end(categoryForm) }}
 
 {% endblock %}
