@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}JDS - votre nouvelle boutique de jeux de sociétés en ligne{% endblock %}
+
+{% block title %}accueil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+{% endblock %}
+
+{% block h1 %}Bienvenue chez Table Top Games{% endblock %}
+
+{% block body %}
+
+    <div class="col-12">
+        <h2 class="my-3">Derniers produits</h2>
+        <div class="row">
+            {# affichage des produits #}
+            {% for item in products %} {# filtre |reverse pour parcourir le tableau à l'envers #}
+                {# {% if loop.index <= 8 %} #}
+                    <div class="col-md-6 col-lg-4 col-xl-3 p-3">
+                        <div class="card">
+                            <img src="{{ asset('img/product/' ~ item.img1) }}" class="card-img-top p-3" alt="image principale du jeu {{ item.name }}">
+                            {% if item.createdAt|date('Y-m-d') >= "now"|date_modify("-20 day")|date('Y-m-d') %}
+                                <span class="new_product">Nouveauté</span>
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.name }}</h5>
+                                <p class="card-text">{{ item.abstract|u.truncate(70, '...', false) }}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">{{ item.minPlayers }} à {{ item.maxPlayers }} joueur(s)</li>
+                                <li class="list-group-item">{{ item.price|number_format(2, ',', ' ') }} €</li>
+                            </ul>
+                            <div class="card-body text-center">
+                                <a href="{{ path('product_show', {'slug': item.slug}) }}" class="card-link btn btn-outline-primary">Détails</a>
+                                <a href="#" class="card-link btn btn-{{ item.quantity != 0 ? 'success' : 'danger disabled' }}"><i class="bi bi-cart-plus-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                {# {% endif %} #}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row my-5">
+        <div class="col-12">
+            <h2 class="mb-3">Table Top Games</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus asperiores, minus veritatis totam natus, vel illo amet repellendus ducimus provident nihil est magni consequuntur velit possimus, pariatur minima neque eos. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime ad expedita nihil, maiores ullam inventore recusandae, ducimus nisi animi quia enim fuga facilis accusamus dignissimos magnam dicta incidunt quam sequi !</p>
+        </div>
+    </div>
+
+    <div class="row mt-3 mb-5">
+        <div class="col-12">
+            <h2 class="mb-3">Meilleures ventes</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aspernatur repudiandae officia totam nesciunt error delectus eaque, nostrum eum, temporibus quidem fugit iure beatae ratione nobis modi assumenda quas quasi.</p>
+        </div>
+    </div>
+
+{% endblock %}

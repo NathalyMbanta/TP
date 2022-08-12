@@ -1,0 +1,60 @@
+{% extends "baseAdmin.html.twig" %}
+
+{% block title %}{{ app.request.attributes.get('_route') == 'product_create' ? 'création' : 'modification' }} categorie{% endblock %}
+
+{% block body %}
+
+    <h1 class="mb-5">{{ app.request.attributes.get('_route') == 'product_create' ? 'Créer' : 'Modifier' }} une categorie</h1>
+
+    {# {{ form(productForm) }} #}
+
+    {{ form_start(categoryForm) }}
+
+        <div class="row">
+            <div class="col-4">
+                {# {{ form_row(productForm.name) }} #}
+                {{ form_label(categoryForm.name, 'Nom') }}
+                {{ form_errors(categoryForm.name) }}
+                {{ form_widget(categoryForm.name, {
+                    'attr': {
+                        'placeholder': 'Ex.: David'
+                    }
+                }) }}
+                {{ form_help(categoryForm.name) }}
+            </div>
+            <div class="col-4">
+                {{ form_row(categoryForm.description, {
+                    'label': 'Quantité',
+                    'attr': {
+                        'placeholder': 'Ex.: 12'
+                    }
+                }) }}
+            </div>
+          
+                <div class="col-4">
+                    {{ form_row(productForm.img, {
+                        'label': 'Image principale (obligatoire)'
+                    }) }}
+                </div>
+            
+        </div>
+
+       
+            </div>
+           
+
+
+            
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-end my-3">
+                <a href="{{ path('admin_category')}}" class="btn btn-outline-danger me-3">Annuler</a>
+                {# app.request.attributes.get('_route') pour récupérer la route actuelle #}
+                <button class="btn btn-success">{{ app.request.attributes.get('_route') == 'category_create' ? 'Créer' : 'Modifier' }} </button>
+            </div>
+        </div>
+
+    {{ form_end(productForm) }}
+
+{% endblock %}

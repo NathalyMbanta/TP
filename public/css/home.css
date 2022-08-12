@@ -1,0 +1,24 @@
+/* **************************************** HOME **************************************** */
+
+    .card .card-body:first-of-type {
+        min-height: 160px;
+    }
+
+    .card .card-body h5 {
+        min-height: 48px;
+    }
+
+    .card .card-img-top {
+        position: relative;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+    }
+
+    .new_product {
+        position: absolute;
+        top: 3rem;
+        left: 1.5rem;
+        background-color: #0D6EFD;
+        padding: 5px;
+        color: #FFFFFF;
+    }

@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block description %}{{ category.abstract|u.truncate(157, '...') }}{% endblock %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/product.css') }}">
+{% endblock %}
+
+{% block h1 %}{{ category.name }}{% endblock %}
+
+{% block body %}
+
+    <div class="col-md-8 col-lg-4 offset-md-2 offset-lg-1">
+        <div class="row mb-4">
+            <img src="{{ asset('img/product/' ~ category.img1) }}" alt="photo principale du jeu {{ category.name }}" class="w-100">
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <img src="{{ asset('img/product/' ~ product.img1) }}" alt="photo secondaire du jeu {{ product.name }}" class="w-100">
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-md-8 col-lg-10 offset-md-2 offset-lg-1">
+            <h2>Description</h2>
+            <p>{{ category.description }}</p>
+        </div>
+
+        <div class="col-md-8 col-lg-10 offset-md-2 offset-lg-1">
+            <h2>Nom</h2>
+            <p>{{ category.name }}</p>
+        </div>
+    </div>
+
+{% endblock %}
